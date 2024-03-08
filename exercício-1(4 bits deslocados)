@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+int main() {
+    int numero, resultado;
+
+    // Solicita um número inteiro ao usuário
+    printf("Digite um numero inteiro: ");
+    scanf("%d", &numero);
+
+    // Realiza o deslocamento de 4 bits para a direita
+    resultado = numero >> 4;
+
+    // Imprime o resultado
+    printf("O numero %d deslocado 4 bits para a direita e: %d\n", numero, resultado);
+
+    return 0;
+}
