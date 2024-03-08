@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int main() {
+    int n, impar, par;
+
+    // Solicita um número inteiro ao usuário
+    printf("Digite um numero inteiro: ");
+    scanf("%d", &n);
+
+    if( n %2 == 0 ) {
+        par = n;
+        printf("0 \n" );
+    }
+    else if ( n %2 == 1 )
+    {
+        impar = n;
+        printf("1 \n");
+    }
+    return 0;
+}
