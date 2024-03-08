@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int main() {
+    signed int numero_signed;
+    unsigned int numero_unsigned;
+
+    // Solicita um número inteiro ao usuário
+    printf("Digite um numero inteiro: ");
+    scanf("%d", &numero_signed);
+
+    // Converte o número de signed para unsigned
+    numero_unsigned = (unsigned int)numero_signed;
+
+    // Imprime os valores e suas representações
+    printf("Numero original (signed): %d\n", numero_signed);
+    printf("Numero convertido (unsigned): %u\n", numero_unsigned);
+
+    return 0;
+}
