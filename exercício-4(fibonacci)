@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main() {
+  int a,b,c,n,cont;
+
+  printf("Digite quantos termos da sequencia de Fibonacci voce quer:\n");
+  scanf("%d", &n);
+
+  if (n <= 1) {
+    printf("Numero de termos invalido\n");
+  }
+  else {
+    a = 1;
+    b = 1;
+    cont = 2;
+    printf("\n\n1\n1\n");
+
+    while(cont < n) {
+      c = a + b;
+      printf("%d \n",c);
+      a = b;
+      b = c;
+      cont = cont + 1;
+     
+    }
+  }
+  return(0);
+}
