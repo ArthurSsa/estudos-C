@@ -1,0 +1,29 @@
+#include<stdio.h>;
+
+int primo(int n)
+{
+int i=2;
+int z;
+
+while(i<=n-1){
+z = n%i;
+if(z==0){
+return 0;
+}
+
+i++;
+}
+return 1;
+}
+
+int main(){
+int k;
+printf("Digite um número:\n");
+scanf("%d",&k);
+if(primo(k)==0){
+printf("Não é primo.\n");
+}else{
+printf("É primo.\n");
+
+}
+}
