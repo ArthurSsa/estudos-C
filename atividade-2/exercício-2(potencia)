@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <math.h>
+
+int main(){
+    
+int a,b,c,resultado;
+
+ printf("Digite um número a ser elevado:\n");
+  scanf("%d", &a);
+  
+ printf("digite a potencia desejada para o numerador:\n");
+  scanf("%d", &b);
+  
+  resultado = pow(a,b);
+  
+  printf("o resultado dessa operação foi: %d \n", resultado);
+    
+    return 0;
+}
