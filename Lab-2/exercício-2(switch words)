@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+void embaralhar_palavra(char *palavra) {
+    int comprimento = strlen(palavra);
+    if (comprimento <= 2)
+   
+    // Embaralhando os caracteres dentro da palavra
+    for (int i = 1; i < comprimento - 1; i++) {
+        int j = rand() % (comprimento - 2) + 1; // Gerando um índice aleatório dentro da palavra
+        char temp = palavra[i];
+        palavra[i] = palavra[j];
+        palavra[j] = temp;
+    }
+}
+int main() {
+    srand(time(NULL));
+   
+    char frase[100];
+    printf("Digite uma frase: ");
+    fgets(frase, sizeof(frase), stdin);
+   
+    char *palavra;
+    char *resto = frase;
+   
+    while ((palavra = strtok_r(resto, " \n", &resto))) {
+        if (rand() % 2 == 0) {
+            embaralhar_palavra(palavra);
+        }
+        printf("%s ", palavra);
+    }
+   
+    printf("\n");
+   
+    return 0;
+}

@@ -1,0 +1,65 @@
+Questão 2
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+void gerar_e_rotular_senhas();
+char* rotular_prioridade();
+char* gerar_senha();
+int main(){
+    srand(time(NULL));
+    int x = 0;
+    do
+    {
+    printf("deseja gerar as senhas? digite '1'.\ndeseja finalizar o programa? digite qualquer outra opcao.");
+    scanf("%d",&x);
+    if(x == 1){
+    gerar_e_rotular_senhas();
+       
+    } else if(x == 0){
+        printf("fim do programa");
+        return 0;
+    } else{
+        printf("resposta invalida, digite uma opcao correta");
+        while (getchar() != '\n');
+       
+    }
+    } while (x == 1);
+   
+   
+    return 0;
+}
+char* gerar_senha() {
+    char letras[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    char numeros[] = "0123456789";
+    char* senha = (char*)malloc(6 * sizeof(char));
+   
+   
+    senha[0] = letras[rand() % 26];
+    senha[1] = letras[rand() % 26];
+   
+   
+    for (int i = 0; i < 3; i++) {
+        senha[i + 2] = numeros[rand() % 10];
+    }
+   
+    senha[5] = '\0';
+   
+    return senha;
+}
+char* rotular_prioridade() {
+    int num = rand() % 3;
+   
+    if (num == 0) {
+        return "prioridade";
+    } else {
+        return "normal";
+    }
+}
+void gerar_e_rotular_senhas() {
+    for (int i = 0; i < 10; i++) {
+        char* senha = gerar_senha();
+        char* rotulo = rotular_prioridade();
+        printf("Senha: %s - %s\n", senha, rotulo);
+        free(senha);
+    }
+}

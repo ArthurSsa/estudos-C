@@ -1,0 +1,85 @@
+#include <stdio.h>
+#include <stdlib.h>
+// Função para calcular o comprimento de uma string
+int meu_strlen(const char *str) {
+    int len = 0;
+    while (str[len] != '\0') {
+        len++;
+    }
+    return len;
+}
+// Função para encontrar uma substring em uma string
+char* meu_strstr(const char *str, const char *sub) {
+    while (*str) {
+        const char *p1 = str;
+        const char *p2 = sub;
+       
+        while (*p1 && *p2 && (*p1 == *p2)) {
+            p1++;
+            p2++;
+        }
+       
+        if (!(*p2)) {
+            return (char*)str;
+        }
+       
+        str++;
+    }
+    return NULL;
+}
+// Função para substituir todas as ocorrências de uma substring por outra substring em uma string
+char* substituir_palavras(char *texto, char **palavras, int num_palavras) {
+    int i, j;
+    char texto_substituido = (char)malloc((meu_strlen(texto) + 1) * sizeof(char)); // +1 para o caractere nulo
+    if (texto_substituido == NULL) {
+        printf("Erro de alocação de memória.\n");
+        exit(1);
+    }
+   
+    for (i = 0; texto[i] != '\0'; i++) {
+        texto_substituido[i] = texto[i];
+    }
+    texto_substituido[i] = '\0';
+    for (i = 0; i < num_palavras; i++) {
+        char *palavra = palavras[i];
+        int len_palavra = meu_strlen(palavra);
+        char *ptr = texto_substituido;
+        while ((ptr = meu_strstr(ptr, palavra)) != NULL) {
+            for (j = 0; j < len_palavra; j++) {
+                (ptr + j) = ''; // Substituir cada caractere da palavra por *
+            }
+            ptr += len_palavra;
+        }
+    }
+    return texto_substituido;
+}
+int main() {
+    int num_palavras, i;
+    printf("Digite a quantidade de palavras: ");
+    scanf("%d", &num_palavras);
+    if(num_palavras % 2 == 1){
+        num_palavras+=1;
+    }
+    char *palavras = (char)malloc(num_palavras * sizeof(char));
+    if (palavras == NULL) {
+        printf("Erro de alocação de memória.\n");
+        return 1;
+    }
+    printf("Digite as palavras:\n");
+    for (i = 0; i < num_palavras; i++) {
+        palavras[i] = (char*)malloc(100 * sizeof(char)); // Tamanho máximo de cada palavra é 100
+        scanf("%s", palavras[i]);
+    }
+    printf("Digite um texto:\n");
+    char texto[1000]; // Tamanho máximo do texto é 1000
+    scanf(" %[^\n]", texto);
+    char *texto_substituido = substituir_palavras(texto, palavras, num_palavras);
+    printf("Texto com as palavras substituidas:\n%s\n", texto_substituido);
+    // Liberar memória alocada
+    for (i = 0; i < num_palavras; i++) {
+        free(palavras[i]);
+    }
+    free(palavras);
+    free(texto_substituido);
+    return 0;
+}

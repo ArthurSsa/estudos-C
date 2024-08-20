@@ -1,0 +1,48 @@
+#include <stdio.h>
+
+int main(){
+        int y = 0;
+        int u = 0;
+        float h = 0;
+        float t = 0;
+        puts("digite o primeiro numero");
+        scanf("%d",&y);
+        puts("digite o segundo numero");
+        scanf("%d",&u);
+       
+        int x;
+        puts("digite 1 para somar os elementos");
+        puts("digite 2 para subtrair os elementos");
+        puts("digite 3 para multiplicar os elementos");
+        puts("digite 4 para dividir os elementos");
+        puts("digite 5 para pegar o resto dos elementos");
+        scanf("%d",&x);
+    switch (x){
+    case 1:
+        y +=u;
+        printf("o resultado foi %d",y);
+        break;
+    case 2:
+    y = y - u;
+    printf("o resultado foi %d",y);
+    break;
+    case 3:
+        y *=u;
+        printf("o resultado foi %d",y);
+        break;
+    case 4:
+    h = y;
+    t =u;
+    h = h / t;
+    printf("o resultado foi %.3f",h);
+    break;
+    case 5:
+        y =y % u;
+        printf("o resultado foi %d",y);
+        break;
+    default:
+    printf("o numero inserido nao foi correspondido");
+        break;
+    }
+    return 0;
+}
