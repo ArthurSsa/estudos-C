@@ -11,10 +11,4 @@ void adicionarInvestimento(InformacaoFinanceira *transacoes, int *totalTransacoe
 // Exibe informações sobre todos os investimentos
 void exibirInvestimentos(InformacaoFinanceira *transacoes, int totalTransacoes);
 
-// Calcula o valor bruto total
-float calcularValorBrutoTotal(InformacaoFinanceira *transacoes, int totalTransacoes);
-
-// Calcula o valor líquido total
-float calcularValorLiquidoTotal(InformacaoFinanceira *transacoes, int totalTransacoes);
-
 #endif // GERENCIAMENTO_INVESTIMENTO_H

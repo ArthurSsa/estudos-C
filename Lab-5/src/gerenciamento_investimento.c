@@ -1,6 +1,8 @@
 #include "gerenciamento_investimento.h"
 #include <stdio.h>
 
+#define MAX_TRANSACOES 100
+
 // Adiciona um investimento à lista de transações
 void adicionarInvestimento(InformacaoFinanceira *transacoes, int *totalTransacoes, InformacaoFinanceira investimento) {
     if (*totalTransacoes < MAX_TRANSACOES) {
@@ -22,24 +24,27 @@ void exibirInvestimentos(InformacaoFinanceira *transacoes, int totalTransacoes) 
         printf("Valor Bruto: %.2f\n", investimento.valorBruto);
         printf("Taxa de Juros: %.2f%%\n", investimento.taxaJuros);
         printf("Imposto: %.2f\n", investimento.imposto);
+        
+        // Exibe o tipo de investimento
+        printf("Tipo de Investimento: ");
+        switch (investimento.tipo) {
+            case PREFIXADO:
+                printf("Prefixado\n");
+                break;
+            case IPCA:
+                printf("IPCA\n");
+                break;
+            case SELIC:
+                printf("SELIC\n");
+                break;
+            case CDI:
+                printf("CDI\n");
+                break;
+            default:
+                printf("Desconhecido\n");
+                break;
+        }
+
         printf("-----------------------------\n");
     }
-}
-
-// Calcula o valor bruto total
-float calcularValorBrutoTotal(InformacaoFinanceira *transacoes, int totalTransacoes) {
-    float totalBruto = 0;
-    for (int i = 0; i < totalTransacoes; i++) {
-        totalBruto += transacoes[i].valorBruto;
-    }
-    return totalBruto;
-}
-
-// Calcula o valor líquido total
-float calcularValorLiquidoTotal(InformacaoFinanceira *transacoes, int totalTransacoes) {
-    float totalLiquido = 0;
-    for (int i = 0; i < totalTransacoes; i++) {
-        totalLiquido += (transacoes[i].valorBruto - transacoes[i].imposto);
-    }
-    return totalLiquido;
 }
