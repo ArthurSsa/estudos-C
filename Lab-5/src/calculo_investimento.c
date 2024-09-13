@@ -16,10 +16,16 @@ int calcularMeses(Data data1, Data data2) {
     return meses;
 }
 
-// Atualiza o valor bruto do investimento
-void atualizarInvestimento(InformacaoFinanceira *investimento) {
+// Atualiza o valor bruto do investimento com rendimentos variáveis
+void atualizarInvestimento(InformacaoFinanceira *investimento, float *taxasMensais, int numMeses) {
     int meses = calcularMeses(investimento->dataAplicacao, investimento->dataVencimento);
-    double taxaMensal = investimento->taxaJuros / 100 / 12;
-    investimento->valorBruto = investimento->valorAplicado * pow(1 + taxaMensal, meses);
+    double valor = investimento->valorAplicado;
+    
+    for (int i = 0; i < meses && i < numMeses; i++) {
+        double taxaMensal = taxasMensais[i] / 100;
+        valor *= (1 + taxaMensal);
+    }
+    
+    investimento->valorBruto = valor;
     investimento->imposto = investimento->valorBruto * 0.15; // Supondo imposto de 15%
 }

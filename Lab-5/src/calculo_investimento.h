@@ -3,8 +3,8 @@
 
 #include "tipos.h"
 
-// Atualiza o valor bruto do investimento
-void atualizarInvestimento(InformacaoFinanceira *investimento);
+// Atualiza o valor bruto do investimento com rendimentos variáveis
+void atualizarInvestimento(InformacaoFinanceira *investimento, float *taxasMensais, int numMeses);
 
 // Calcula a diferença em dias entre duas datas
 int calcularDias(Data data1, Data data2);

@@ -1,8 +1,6 @@
 #include "gerenciamento_investimento.h"
 #include <stdio.h>
 
-#define MAX_TRANSACOES 100
-
 // Adiciona um investimento à lista de transações
 void adicionarInvestimento(InformacaoFinanceira *transacoes, int *totalTransacoes, InformacaoFinanceira investimento) {
     if (*totalTransacoes < MAX_TRANSACOES) {
@@ -26,4 +24,22 @@ void exibirInvestimentos(InformacaoFinanceira *transacoes, int totalTransacoes) 
         printf("Imposto: %.2f\n", investimento.imposto);
         printf("-----------------------------\n");
     }
+}
+
+// Calcula o valor bruto total
+float calcularValorBrutoTotal(InformacaoFinanceira *transacoes, int totalTransacoes) {
+    float totalBruto = 0;
+    for (int i = 0; i < totalTransacoes; i++) {
+        totalBruto += transacoes[i].valorBruto;
+    }
+    return totalBruto;
+}
+
+// Calcula o valor líquido total
+float calcularValorLiquidoTotal(InformacaoFinanceira *transacoes, int totalTransacoes) {
+    float totalLiquido = 0;
+    for (int i = 0; i < totalTransacoes; i++) {
+        totalLiquido += (transacoes[i].valorBruto - transacoes[i].imposto);
+    }
+    return totalLiquido;
 }
