@@ -15,7 +15,11 @@ typedef enum {
 } TipoInvestimento;
 
 typedef struct {
-    char nome[100];
+    char nome[100];  // Campo 'nome' definido aqui
+} Titular;
+
+typedef struct {
+    Titular titular;  // 'Titular' é uma estrutura que contém o campo 'nome'
     Data dataAplicacao;
     Data dataVencimento;
     double valorAplicado;
@@ -24,5 +28,7 @@ typedef struct {
     double imposto;
     TipoInvestimento tipo;
 } InformacaoFinanceira;
+
+#define MAX_TRANSACOES 100  // Definindo o número máximo de transações
 
 #endif // TIPOS_H
